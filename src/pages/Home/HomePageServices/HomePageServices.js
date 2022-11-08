@@ -11,7 +11,7 @@ const HomePageServices = ({ service }) => {
           <Card.Title>{service.name}</Card.Title>
           <Card.Text>BDT: {service.price}</Card.Text>
           <Card.Text>{service.descripton}</Card.Text>
-          <Button variant="primary">Show Details</Button>
+          <Button variant="primary">View Details</Button>
         </Card.Body>
       </Card>
     </div>

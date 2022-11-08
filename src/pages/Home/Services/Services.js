@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import HomePageServices from "../HomePageServices/HomePageServices";
+import './Service.css';
 
 const Services = () => {
   const [services, setServices] = useState([]);
@@ -24,7 +26,7 @@ const Services = () => {
           ))}
         </div>
         <div className="text-center">
-          <button className="btn btn-primary mt-4">See All</button>
+          <button className="btn btn-primary mt-4"><Link to="/allServices" className="text-white text-decoration-none">See All</Link></button>
         </div>
       </Container>
     </div>
