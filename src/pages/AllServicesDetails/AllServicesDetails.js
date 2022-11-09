@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 
 const AllServicesDetails = ({ service }) => {
+  
   return (
     <Container>
         <Card className="w-full shadow-xl">
@@ -17,7 +18,6 @@ const AllServicesDetails = ({ service }) => {
           <Button variant="primary"><Link className="text-white text-decoration-none" to={`/allServices/${service._id}`}>View Details</Link> </Button>
         </Card.Body>
       </Card>
-     
     </Container>
   );
 };

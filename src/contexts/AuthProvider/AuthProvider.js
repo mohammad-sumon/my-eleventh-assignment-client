@@ -1,7 +1,8 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -30,6 +31,20 @@ const AuthProvider = ({ children }) => {
   const logOut = () => {
     return signOut(auth);
   }
+
+  useEffect( () => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
+      // console.log('inside auth state changed', currentUser);
+
+    })
+
+    return () => {
+      unsubscribe();
+    }
+
+  }, [])
 
   const authInfo = { createUser, user, setUser, loading, googleSignIn, signIn, logOut };
 
