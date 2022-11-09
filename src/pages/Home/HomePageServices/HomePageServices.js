@@ -4,6 +4,7 @@ import Card from "react-bootstrap/Card";
 
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
+import { Link } from "react-router-dom";
 
 const HomePageServices = ({ service }) => {
   return (
@@ -18,7 +19,7 @@ const HomePageServices = ({ service }) => {
           <Card.Title>{service.name}</Card.Title>
           <Card.Text>BDT: {service.price}</Card.Text>
           <Card.Text>{service.descripton}</Card.Text>
-          <Button variant="primary">View Details</Button>
+          <Button variant="primary"><Link className="text-white text-decoration-none" to={`/allServices/${service._id}`}>View Details</Link> </Button>
         </Card.Body>
       </Card>
     </div>

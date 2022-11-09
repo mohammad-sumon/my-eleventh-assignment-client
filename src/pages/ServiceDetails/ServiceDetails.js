@@ -54,26 +54,11 @@ const ServiceDetails = () => {
   .then(data => {
     console.log(data)
     if(data.acknowledged){
-      // alert('review successful');
       toast.success('Review Successful');
       form.reset();
     }
   })
   .catch(err => console.error(err));
-
-    // signIn(email, password)
-    //   .then((result) => {
-    //     const user = result.user;
-    //     console.log(user);
-    //     form.reset();
-    //     setError("");
-    //     alert("Successfully Login");
-    //     navigate(from, {replace: true});
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //     setError(error.message);
-    //   });
   };
 
   
