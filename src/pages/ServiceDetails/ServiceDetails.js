@@ -5,6 +5,8 @@ import Card from "react-bootstrap/Card";
 import { Container, Form } from "react-bootstrap";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import useTitle from "../../hooks/useTitle";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ServiceDetails = () => {
   useTitle('ServiceDetails');
@@ -34,6 +36,7 @@ const ServiceDetails = () => {
     form.reset();
 
     const review = {
+      serviceName: displayService.name,
       name,
       email,
       message,
@@ -51,7 +54,8 @@ const ServiceDetails = () => {
   .then(data => {
     console.log(data)
     if(data.acknowledged){
-      alert('review successful');
+      // alert('review successful');
+      toast.success('Review Successful');
       form.reset();
     }
   })
@@ -159,7 +163,7 @@ const ServiceDetails = () => {
             )}
           </div>
         </div>
-
+        <ToastContainer />
       </Container>
     </div>
   );
