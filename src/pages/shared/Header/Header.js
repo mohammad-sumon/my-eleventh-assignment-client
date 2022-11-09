@@ -37,8 +37,8 @@ const Header = () => {
             <>
               {user?.uid ? (
                 <>
-                  <Link className="text-decoration-none text-dark">My Reviws</Link>
-                  <Link className="text-decoration-none mx-2 text-dark">Add Service</Link>
+                  <Link className="text-decoration-none text-dark" to="/myReviews">My Reviws</Link>
+                  <Link className="text-decoration-none mx-2 text-dark" to="/addService">Add Service</Link>
                   <Button variant="primary" onClick={handleLogOut}>
                     Log Out
                   </Button>

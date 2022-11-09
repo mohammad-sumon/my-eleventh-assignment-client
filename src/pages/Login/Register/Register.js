@@ -5,12 +5,13 @@ import Form from "react-bootstrap/Form";
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import useTitle from '../../../hooks/useTitle';
+import Spinner from "react-bootstrap/Spinner";
 
 const Register = () => {
   useTitle("Register");
     const [error, setError] = useState('');
 
-    const {createUser} = useContext(AuthContext);
+    const {createUser, loading} = useContext(AuthContext);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -34,6 +35,14 @@ const Register = () => {
             console.error(error);
             setError(error.message)
           });
+      };
+
+      if (loading) {
+        return (
+          <div>
+            <Spinner animation="border" variant="primary" />
+          </div>
+        );
       };
 
 

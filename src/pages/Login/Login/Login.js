@@ -7,10 +7,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
 import useTitle from "../../../hooks/useTitle";
+import Spinner from "react-bootstrap/Spinner";
 
 const Login = () => {
   useTitle('Login')
-  const { googleSignIn, signIn, setUser } = useContext(AuthContext);
+  const { googleSignIn, signIn, setUser, loading } = useContext(AuthContext);
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
@@ -53,6 +54,14 @@ const Login = () => {
       .catch((error) => {
         console.error(error);
       });
+  };
+
+  if (loading) {
+    return (
+      <div>
+        <Spinner animation="border" variant="primary" />
+      </div>
+    );
   };
 
   return (
