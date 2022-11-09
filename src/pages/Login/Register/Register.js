@@ -42,7 +42,7 @@ const Register = () => {
         <Form  onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Your Name</Form.Label>
-            <Form.Control type="text" name="name" placeholder="Enter name" />
+            <Form.Control type="text" name="name" placeholder="Enter name" required/>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -56,7 +56,7 @@ const Register = () => {
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" name="email" placeholder="Enter email" />
+            <Form.Control type="email" name="email" placeholder="Enter email" required/>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -65,6 +65,7 @@ const Register = () => {
               type="password"
               name="password"
               placeholder="Password"
+              required
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicCheckbox">
