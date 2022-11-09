@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
+import useTitle from "../../hooks/useTitle";
 import AllServicesDetails from "../AllServicesDetails/AllServicesDetails";
 import "./AllServices.css";
 
 const AllServices = () => {
+  useTitle('AllServices');
   const [services, setServices] = useState([]);
 
   useEffect(() => {

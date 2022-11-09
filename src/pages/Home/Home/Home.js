@@ -1,9 +1,11 @@
 import React from 'react';
+import useTitle from '../../../hooks/useTitle';
 import Banner from '../Banner/Banner';
 import Section from '../Section/Section';
 import Services from '../Services/Services';
 
 const Home = () => {
+    useTitle('Home');
     return (
         <div>
             <div className='text-center my-3'>

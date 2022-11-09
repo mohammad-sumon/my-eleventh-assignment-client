@@ -4,8 +4,10 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Container, Form } from "react-bootstrap";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
+import useTitle from "../../hooks/useTitle";
 
 const ServiceDetails = () => {
+  useTitle('ServiceDetails');
   const { user, signIn } = useContext(AuthContext);
   const [error, setError] = useState("");
 

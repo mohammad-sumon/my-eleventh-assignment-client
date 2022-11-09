@@ -6,8 +6,10 @@ import Form from "react-bootstrap/Form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
+import useTitle from "../../../hooks/useTitle";
 
 const Login = () => {
+  useTitle('Login')
   const { googleSignIn, signIn, setUser } = useContext(AuthContext);
   const [error, setError] = useState("");
 
