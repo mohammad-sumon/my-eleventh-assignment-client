@@ -11,6 +11,10 @@ const ServiceDetails = () => {
   const { user, signIn } = useContext(AuthContext);
   const [error, setError] = useState("");
 
+  const service = useLoaderData();
+  console.log(service);
+  const [displayService, setDisplayService] = useState(service);
+
   // const [services, setServices] = useState([]);
 
   const navigate = useNavigate();
@@ -22,11 +26,36 @@ const ServiceDetails = () => {
 
     const form = event.target;
     const name = form.name.value;
+    const email = form.email.value;
     const photoURL = form.photoURL.value;
-    const review = form.review.value;
-    console.log(name, photoURL, review);
-    alert("Review Successfull");
+    const message = form.message.value;
+    console.log(name, photoURL, message);
+    // alert("Review Successfull");
     form.reset();
+
+    const review = {
+      name,
+      email,
+      message,
+      photoURL
+    }
+
+    fetch('http://localhost:5000/myReviews', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify(review)
+  })
+  .then(res => res.json())
+  .then(data => {
+    console.log(data)
+    if(data.acknowledged){
+      alert('review successful');
+      form.reset();
+    }
+  })
+  .catch(err => console.error(err));
 
     // signIn(email, password)
     //   .then((result) => {
@@ -43,10 +72,9 @@ const ServiceDetails = () => {
     //   });
   };
 
+  
 
-  const service = useLoaderData();
-  console.log(service);
-  const [displayService, setDisplayService] = useState(service);
+
   return (
     <div>
       <Container>
@@ -65,6 +93,8 @@ const ServiceDetails = () => {
          <div>
           <h3 className="text-center my-4 text-info">Review Section</h3>
           <hr />
+          <h4 className="text-center my-2">Please write a review of: <span style={{color: 'purple'}}>{displayService.name}</span></h4>
+
 
           <div>
             {user?.uid ? (
@@ -80,9 +110,20 @@ const ServiceDetails = () => {
                     />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Your Photo URL</Form.Label>
+                    <Form.Label>Your Email</Form.Label>
                     <Form.Control
                       type="email"
+                      name="email"
+                      placeholder="Enter email"
+                      defaultValue={user?.email}
+                      readOnly
+                      required
+                    />
+                  </Form.Group>
+                  <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Your Photo URL</Form.Label>
+                    <Form.Control
+                      type="text"
                       name="photoURL"
                       placeholder="Enter photoURL"
                       required
@@ -92,7 +133,7 @@ const ServiceDetails = () => {
                     <Form.Label>Please write your review here.</Form.Label>
                     <Form.Control
                       type="text"
-                      name="review"
+                      name="message"
                       placeholder="Enter review"
                       required
                     />
