@@ -68,3 +68,28 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# Website Name:
+
+### SAM Kitchen
+
+# Live Website Link:
+
+### https://sam-kitchen-client.web.app/
+
+### https://sam-kitchen-client.firebaseapp.com/
+
+## Features & Functionality
+
+<ul>
+    <li>React Router Dom</li>
+    <li>Firebase Authentication</li>
+    <li>Used backend server in Vercel</li>
+    <li>Private Route</li>
+    <li>Google Authtication</li>
+    <li>React Photo View</li>
+    <li>CRUD Operation</li>
+    <li>JWT Token</li>
+    <li>React Toast</li>
+    <li>React Icons</li>
+</ul>

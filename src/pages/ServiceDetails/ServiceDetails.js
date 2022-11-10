@@ -12,6 +12,7 @@ const ServiceDetails = () => {
   useTitle('ServiceDetails');
   const { user, signIn } = useContext(AuthContext);
   const [error, setError] = useState("");
+  const [allReview, setAllReview] = useState([]);
 
   const service = useLoaderData();
   console.log(service);
@@ -43,7 +44,7 @@ const ServiceDetails = () => {
       photoURL
     }
 
-    fetch('http://localhost:5000/myReviews', {
+    fetch('https://service-review-server-one.vercel.app/myReviews', {
     method: 'POST',
     headers: {
       'content-type': 'application/json'
@@ -59,6 +60,21 @@ const ServiceDetails = () => {
     }
   })
   .catch(err => console.error(err));
+
+
+  fetch(`https://service-review-server-one.vercel.app/allServices/${id}`, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify(allReview)
+  })
+  .then(res => res.json())
+  .then(data => {
+    setAllReview(data);
+    console.log(data);
+  })
+
   };
 
   
@@ -148,6 +164,17 @@ const ServiceDetails = () => {
             )}
           </div>
         </div>
+
+        {/* All users review is here */}
+        <div>
+          <p>all review</p>
+              {allReview.name}
+        </div>
+
+
+
+
+
         <ToastContainer />
       </Container>
     </div>

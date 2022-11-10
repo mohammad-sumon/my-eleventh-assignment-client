@@ -17,7 +17,7 @@ const AddService = () => {
     console.log(name, price, photoURL, description);
     form.reset();
 
-    fetch('http://localhost:5000/addServices', {
+    fetch('https://service-review-server-one.vercel.app/addServices', {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
