@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Container } from "react-bootstrap";
 import { Form, Link } from "react-router-dom";
+import "./AddService.css";
 
 const AddService = () => {
   const [addService, setAddService] = useState({});
@@ -17,36 +18,33 @@ const AddService = () => {
     console.log(name, price, photoURL, description);
     form.reset();
 
-    fetch('https://service-review-server-one.vercel.app/addServices', {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify(addService)
+    fetch("https://service-review-server-one.vercel.app/addServices", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(addService),
     })
-    .then(res => res.json())
-    .then(data => console.log(data))
+      .then((res) => res.json())
+      .then((data) => console.log(data));
   };
 
   return (
-    
     <div>
-      <Container>
+      <Container className="addServ">
         <h2>This is add service section</h2>
         <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="name" name="name"/>
-            <br />
-            <input type="text" placeholder="photoURL" name="photoURL"/>
-            <br />
-            <input type="text" placeholder="price" name="price"/>
-            <br />
-            <input type="text" placeholder="description" name="description"/>
-            <br />
-            <button className="btn btn-info mt-4">Submit</button>
+          <input type="text" placeholder="Name" name="name" />
+          <br />
+          <input type="text" placeholder="PhotoURL" name="photoURL" />
+          <br />
+          <input type="text" placeholder="Price" name="price" />
+          <br />
+          <input type="text" placeholder="Description" name="description" />
+          <br />
+          <button className="btn btn-info mt-4">Submit</button>
         </form>
-        
       </Container>
-
     </div>
   );
 };

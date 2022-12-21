@@ -1,0 +1,13 @@
+.addServ{
+    margin-top: 50px;
+    text-align: center;
+}
+.addServ h2{
+    margin-bottom:30px;
+}
+.addServ input{
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid purple;
+}

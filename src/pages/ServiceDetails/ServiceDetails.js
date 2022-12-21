@@ -1,15 +1,21 @@
 import React, { useContext, useState } from "react";
-import { Link, Navigate, useLoaderData, useLocation, useNavigate } from "react-router-dom";
+import {
+  Link,
+  Navigate,
+  useLoaderData,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Container, Form } from "react-bootstrap";
 import { AuthContext } from "../../contexts/AuthProvider/AuthProvider";
 import useTitle from "../../hooks/useTitle";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ServiceDetails = () => {
-  useTitle('ServiceDetails');
+  useTitle("ServiceDetails");
   const { user, signIn } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [allReview, setAllReview] = useState([]);
@@ -41,49 +47,47 @@ const ServiceDetails = () => {
       name,
       email,
       message,
-      photoURL
-    }
+      photoURL,
+    };
 
-    fetch('https://service-review-server-one.vercel.app/myReviews', {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json'
-    },
-    body: JSON.stringify(review)
-  })
-  .then(res => res.json())
-  .then(data => {
-    console.log(data)
-    if(data.acknowledged){
-      toast.success('Review Successful');
-      form.reset();
-    }
-  })
-  .catch(err => console.error(err));
+    fetch("https://service-review-server-one.vercel.app/myReviews", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(review),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          toast.success("Review Successful");
+          form.reset();
+        }
+      })
+      .catch((err) => console.error(err));
 
-
-  fetch(`https://service-review-server-one.vercel.app/allServices/${id}`, {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json'
-    },
-    body: JSON.stringify(allReview)
-  })
-  .then(res => res.json())
-  .then(data => {
-    setAllReview(data);
-    console.log(data);
-  })
-
+    fetch(`https://service-review-server-one.vercel.app/allServices/`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(allReview),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setAllReview(data);
+        console.log(data);
+      });
   };
-
-  
-
 
   return (
     <div>
       <Container>
-        <h1 className="text-center my-4">Here is the service details of: <span style={{color: 'purple'}}>{displayService.name}</span></h1>
+        <h1 className="text-center my-4">
+          Here is the service details of:{" "}
+          <span style={{ color: "purple" }}>{displayService.name}</span>
+        </h1>
         <Card>
           <Card.Img variant="top" src={displayService.img} />
           <Card.Body>
@@ -93,13 +97,15 @@ const ServiceDetails = () => {
             <Card.Text>Details Info: {displayService.details} </Card.Text>
           </Card.Body>
         </Card>
-        
+
         {/* Review section start */}
-         <div>
+        <div>
           <h3 className="text-center my-4 text-info">Review Section</h3>
           <hr />
-          <h4 className="text-center my-2">Please write a review of: <span style={{color: 'purple'}}>{displayService.name}</span></h4>
-
+          <h4 className="text-center my-2">
+            Please write a review of:{" "}
+            <span style={{ color: "purple" }}>{displayService.name}</span>
+          </h4>
 
           <div>
             {user?.uid ? (
@@ -152,14 +158,15 @@ const ServiceDetails = () => {
               </>
             ) : (
               <>
-              <div className="text-center my-3">
-              <span>Please login to add a review</span>
-                <Link className="text-decoration-none text-dark btn btn-info ms-2" to="/login">
-                  Login
-                </Link>
-
-              </div>
-              
+                <div className="text-center my-3">
+                  <span>Please login to add a review</span>
+                  <Link
+                    className="text-decoration-none text-dark btn btn-info ms-2"
+                    to="/login"
+                  >
+                    Login
+                  </Link>
+                </div>
               </>
             )}
           </div>
@@ -167,13 +174,9 @@ const ServiceDetails = () => {
 
         {/* All users review is here */}
         <div>
-          <p>all review</p>
-              {allReview.name}
+          <p>All review are here</p>
+          {allReview.name}
         </div>
-
-
-
-
 
         <ToastContainer />
       </Container>
